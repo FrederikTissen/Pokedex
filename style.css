@@ -1,0 +1,133 @@
+body {
+    margin: 0px;
+    background-color: rgb(42, 40, 40);
+    
+}
+
+.color-white{
+    color: white;
+}
+
+.header {
+    background-color: black;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #80808063;
+    position: sticky;
+    top: 0px;
+}
+
+.input_header {
+    position: relative;
+    border: solid 1px;
+    border-radius: 10px;
+    width: 215px;
+    padding: 7px;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+.logo-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+}
+
+#pokedex {
+    color: white;
+    display: inline-flex;
+    padding: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-card {
+    background-color: rgb(84, 80, 80);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 40px;
+    height: 240px;
+    width: 300px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(./img/background.png);
+    margin: 10px;
+}
+
+.pokemon-img {
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+    border-radius: 100%;
+    
+}
+
+.pokemon-img-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    background-color: grey;
+    border-radius: 100%;
+}
+
+.pokedex-box{
+    display: flex;
+    justify-content: center;
+}
+
+.type-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-box {
+    display: flex;
+    width: 250px;
+    justify-content: space-around;
+}
+
+.card-name {
+    text-align: center;
+}
+
+.linkbar {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+
+.link_footer {
+    padding: 3px;
+    text-decoration: none;
+}
+
+.type{
+    padding: 5px;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
