@@ -1,18 +1,19 @@
 body {
     margin: 0px;
     background-color: #06090d;
-
+    font-family: 'Roboto';
+    font-style: normal;
 }
 
-.d-none{
-    display: none;
+.d-none {
+    display: none !important;
 }
 
-.background-white{
+.background-white {
     background-color: white;
 }
 
-.black-font{
+.black-font {
     font-style: black !important;
 }
 
@@ -59,6 +60,7 @@ body {
     padding: 24px;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 .normal {
@@ -188,12 +190,13 @@ body {
     object-fit: cover;
     background-color: #172333;
     border-radius: 100%;
+
 }
 
 .pokedex-box {
     display: flex;
     justify-content: center;
-    
+
 }
 
 .type-card {
@@ -217,6 +220,23 @@ body {
     display: flex;
     justify-content: space-between;
     width: 400px;
+}
+
+.detail-card {
+    height: 600px;
+    width: 500px;
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 40px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+
+    background-image: url(./img/background.png);
+    background-repeat: no-repeat;
+    margin: 10px;
 }
 
 .footer {
@@ -245,22 +265,22 @@ body {
     border-radius: 10px;
 }
 
-.darkmode-box{
+.darkmode-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80px;
 }
 
-.border-white{
+.border-white {
     border-radius: 100% !important;
     border: 2px solid white !important;
 }
 
-.border-dark{
+.border-dark {
     border-radius: 100% !important;
     border: 2px solid #172333 !important;
-    
+
 }
 
 .label {
@@ -269,3 +289,52 @@ body {
     cursor: pointer;
 }
 
+.overlay {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    background-color: #06090d70;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+}
+
+.overflow-hidden {
+    overflow-y: hidden !important;
+}
+
+.detail-card-img {
+    height: 160px;
+    width: 160px;
+    object-fit: cover;
+    border-radius: 100%;
+
+}
+
+.detail-card-img-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    background-color: #172333;
+    border-radius: 100%;
+
+}
+
+.detail-card-type-box {
+    display: flex;
+    width: 230px;
+    justify-content: space-between;
+}
+
+.size-box {
+    display: flex;
+    width: 330px;
+    justify-content: space-between;
+}

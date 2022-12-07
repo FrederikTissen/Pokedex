@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
     <script src="script.js"></script>
 
 </head>
 
-<body onload="init()">
+<body id="body" onload="init()">
     <div id="header" class="header">
         <div class="logo-box">
             <img class="logo pointer" src="img/pokeball_logo.png">
@@ -20,15 +21,34 @@
         <input class="input_header" type="text" placeholder="Suche">
 
         <div class="darkmode-box">
-                <img id="moon" onclick="darkMode()" class="label border-dark" src="./img/moon.png">
-                <img id="sun" onclick="darkModeOff()" class="label border-dark" src="./img/sun.png">
+            <img id="moon" onclick="darkMode()" class="label border-dark" src="./img/moon.png">
+            <img id="sun" onclick="darkModeOff()" class="label border-dark" src="./img/sun.png">
         </div>
     </div>
 
 
     <div id="pokedex" class="pokedex"></div>
 
+    <div class="overlay d-none" id="overlay">
+        <div id="detail-card" class=" ">
+            <h2 class="detail-card-name" id="detail-card-name">Name</h2>
+            <div id="detail-card-type-box" class="detail-card-type-box">
+                <p id="detail-card-type" class="type"></p>
+                <p id="detail-card-type2" class="type "></p>
+            </div>
+            <div id="size-box" class="size-box">
+                <p id="size" class="size"></p>
+                <p id="weigth" class="weigth"></p>
+            </div>
+            <div class="detail-card-box">
+                <div id="detail-card-img-div" class="detail-card-img-div">
+                    <img class="detail-card-img" id="detail-card-img" src="" alt="">
+                </div>
+             
+            </div>
+        </div>
 
+    </div>
 
     <div id="footer" class="footer">
         <div id="link-bar" class="linkbar">
