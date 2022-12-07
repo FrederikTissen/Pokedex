@@ -112,6 +112,8 @@ function renderDetailCard(i) {
 
     document.getElementById('detail-card-name').innerHTML = currentPokemon['name'];
     document.getElementById('detail-card-img').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+    document.getElementById('detail-card-img-div').classList = `detail-card-img-div ${type}-border`;
+
     document.getElementById('detail-card-type').innerHTML = currentPokemon['types'][0]['type']['name'];
     document.getElementById('detail-card').classList = `detail-card ${type}`;
     document.getElementById('weigth').innerHTML = `${weight}kg`;
@@ -122,9 +124,12 @@ function renderDetailCard(i) {
     if (currentPokemon['types'][1]) {
         document.getElementById('detail-card-type2').innerHTML = currentPokemon['types'][1]['type']['name'];
         document.getElementById('detail-card-type2').classList = `type ${currentPokemon['types'][1]['type']['name']}`;
+        document.getElementById('detail-card-type-box').style = 'justify-content: space-between; !important';
 
     } else {
         document.getElementById('detail-card-type2').classList = 'type d-none';
+        document.getElementById('detail-card-type-box').style = 'justify-content: center; !important';
+
     }
 }
 

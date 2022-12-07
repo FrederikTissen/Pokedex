@@ -3,6 +3,15 @@ body {
     background-color: #06090d;
     font-family: 'Roboto';
     font-style: normal;
+    
+}
+
+.margin-10{
+    margin: 10px;
+}
+
+.margin-0{
+    margin: 0px;
 }
 
 .d-none {
@@ -13,9 +22,9 @@ body {
     background-color: white;
 }
 
-.black-font {
+/*.black-font {
     font-style: black !important;
-}
+}*/
 
 .color-white {
     color: white;
@@ -157,6 +166,80 @@ body {
     border: 2px solid #99518D;
 }
 
+.normal-border {
+    border: 3px solid #474734;
+}
+
+.fire-border {
+    border: 3px solid #8A4D21;
+}
+
+.water-border {
+    border: 3px solid #455A8C;
+}
+
+.grass-border {
+    border: 3px solid #39632B;
+}
+
+.electric-border {
+    border: 3px solid #917A1F;
+}
+
+.ice-border {
+    border: 3px solid #567575;
+}
+
+.fighting-border {
+    border: 3px solid #661A16;
+}
+
+.poison-border {
+    border: 3px solid #8C378B;
+}
+
+.ground-border {
+    border: 3px solid #7D6C3E;
+}
+
+
+.flying-border {
+    border: 3px solid #62558A;
+}
+
+.psychic-border {
+    border: 3px solid #943B56;
+}
+
+.bug-border {
+    border: 3px solid #505710;
+}
+
+.rock-border {
+    border: 3px solid #594E1D;
+}
+
+.ghost-border {
+    border: 3px solid #281F36;
+}
+
+.dark-border {
+    border: 3px solid #0F0C0A;
+}
+
+.dragon-border {
+    border: 3px solid #452491;
+}
+
+.steel-border {
+    border: 3px solid #63636E;
+}
+
+.fairy-border {
+    border: 3px solid #99518D;
+}
+
+
 .pokemon-card {
     /*background-color: #474734;*/
     border-top-left-radius: 15px;
@@ -225,7 +308,7 @@ body {
 .detail-card {
     height: 600px;
     width: 500px;
-
+position: relative;
     border-top-left-radius: 15px;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 15px;
@@ -324,17 +407,37 @@ body {
     object-fit: cover;
     background-color: #172333;
     border-radius: 100%;
+    top: 115px;
+    position: absolute;
 
 }
 
 .detail-card-type-box {
     display: flex;
     width: 230px;
-    justify-content: space-between;
+    
 }
 
 .size-box {
     display: flex;
     width: 330px;
     justify-content: space-between;
+    
+}
+
+.detail-card-box{
+    height: 500px;
+    width: 500px;
+    background-color: #06090d;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 40px;
+}
+
+.change-pokemon{
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    padding: 30px;
 }
