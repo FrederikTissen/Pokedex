@@ -441,3 +441,11 @@ position: relative;
     justify-content: space-between;
     padding: 30px;
 }
+
+.turn-left-png{
+    cursor: pointer;
+}
+
+.turn-right-png{
+    cursor: pointer;
+}

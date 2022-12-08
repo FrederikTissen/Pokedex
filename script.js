@@ -1,4 +1,4 @@
-let currentPokemon;
+let currentPokemon = 0;
 let allPokemon = [];
 
 
@@ -15,8 +15,8 @@ async function loadPokemon() {
         currentPokemon = await response.json();
 
         allPokemon.push(currentPokemon);
-        showDetailCard(i);
-        //renderPokemonCard(i);
+
+        renderPokemonCard(i);
 
     }
     console.log('Loaded Pokemon', allPokemon);
@@ -42,21 +42,7 @@ function renderPokemonInfo(i) {
 
 function renderPokemonCard(i) {
     let type = currentPokemon['types'][0]['type']['name'];
-
-    document.getElementById('pokedex').innerHTML += /*html*/ ` <div onclick="showDetailCard(${i})" id="pokemon-card${i}" class="pokemon-card ${type}">
-    <h2 class="card-name" id="pokemon-name${i}">Name</h2>
-    <div class="card-box">
-        <div id="pokemon-img-div${i}" class="pokemon-img-div" >
-            <img class="pokemon-img" id="pokemon-img${i}" src="" >
-        </div>
-        <div id="type-card${i}" class="type-card">
-            <p id="type${i}" class="type"></p>
-            <p id="type2-${i}" class="type "></p>
-        </div>
-    </div>
-</div>`
-
-
+    document.getElementById('pokedex').innerHTML += templatePokemonCard(type, i);
     renderPokemonInfo(i);
 }
 
@@ -66,22 +52,45 @@ function darkMode() {
         document.getElementById(`pokemon-img-div${i}`).style = '';
     }
 
-    document.getElementById('moon').classList.add('border-white');
-    document.getElementById('moon').classList.remove('border-dark');
-    document.getElementById('sun').classList.remove('border-white');
-    document.getElementById('sun').classList.add('border-dark');
+   
+    removeClassList('moon', 'border-dark');
+    removeClassList('sun', 'border-white');
+    addClassList('moon', 'border-white')
+    addClassList('sun', 'border-dark')
+  
+    
     document.getElementById('moon').src = './img/moon.png';
-    document.getElementById('header').style = '';
+
+    changeStyle('header', '');
+    changeStyle('footer', '');
+    changeStyle('sun', '');
+    changeStyle('logo-font', '');
+    changeStyle('start-link', '');
+    changeStyle('impressum-link', '');
+    changeStyle('pokedex', '');
+    /*document.getElementById('header').style = '';
     document.getElementById('footer').style = '';
     document.getElementById('sun').style = '';
     document.getElementById('logo-font').style = '';
     document.getElementById('start-link').style = '';
     document.getElementById('impressum-link').style = '';
-    document.getElementById('pokedex').style = '';
+    document.getElementById('pokedex').style = '';*/
 }
 
-function darkModeOff() {
+function addClassList(id, cssClass){
+    document.getElementById(id).classList.add(cssClass);
+}
 
+function removeClassList(id, cssClass){
+    document.getElementById(id).classList.remove(cssClass);
+}
+
+function changeStyle(id, style){
+    document.getElementById(id).style = style;
+}
+
+
+function darkModeOff() {
     for (let i = 1; i < 102; i++) {
         document.getElementById(`pokemon-img-div${i}`).style = 'background-color: #efefef;';
     }
@@ -97,18 +106,13 @@ function darkModeOff() {
 }
 
 function renderDetailCard(i) {
-    i--;
+
     currentPokemon = allPokemon[i];
     let type = currentPokemon['types'][0]['type']['name'];
-    let size = 0;
-    size = currentPokemon['height'] / 10;
-    size = size.toString();
-    size = size.replace(".", ",");
-
-    let weight = 0;
-    weight = currentPokemon['weight'] / 10;
-    weight = weight.toString();
-    weight = weight.replace(".", ",");
+    
+    document.getElementById('overlay').innerHTML = templateDetailCard(i);
+    calculatePokemonWeight(currentPokemon);
+    calculatePokemonSize(currentPokemon);
 
     document.getElementById('detail-card-name').innerHTML = currentPokemon['name'];
     document.getElementById('detail-card-img').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
@@ -116,11 +120,26 @@ function renderDetailCard(i) {
 
     document.getElementById('detail-card-type').innerHTML = currentPokemon['types'][0]['type']['name'];
     document.getElementById('detail-card').classList = `detail-card ${type}`;
+    checkPokemonType(currentPokemon);
+}
+
+function calculatePokemonWeight(currentPokemon){
+    let weight = 0;
+    weight = currentPokemon['weight'] / 10;
+    weight = weight.toString();
+    weight = weight.replace(".", ",");
     document.getElementById('weigth').innerHTML = `${weight}kg`;
+}
+
+function calculatePokemonSize(currentPokemon){
+    let size = 0;
+    size = currentPokemon['height'] / 10;
+    size = size.toString();
+    size = size.replace(".", ",");
     document.getElementById('size').innerHTML = `${size}m`;
+}
 
-
-
+function checkPokemonType(currentPokemon){
     if (currentPokemon['types'][1]) {
         document.getElementById('detail-card-type2').innerHTML = currentPokemon['types'][1]['type']['name'];
         document.getElementById('detail-card-type2').classList = `type ${currentPokemon['types'][1]['type']['name']}`;
@@ -129,16 +148,22 @@ function renderDetailCard(i) {
     } else {
         document.getElementById('detail-card-type2').classList = 'type d-none';
         document.getElementById('detail-card-type-box').style = 'justify-content: center; !important';
-
     }
 }
 
 function showDetailCard(i) {
-
-
+    i--;
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('body').classList.add('overflow-hidden');
+    renderDetailCard(i);
+}
 
+function backwardPokemon(i) {
+    i--;
+    renderDetailCard(i);
+}
 
+function forwardPokemon(i) {
+    i++;
     renderDetailCard(i);
 }
