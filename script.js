@@ -1,5 +1,15 @@
 let currentPokemon = 0;
 let allPokemon = [];
+let pokemonName;
+let pokemonImg;
+let type;
+let type2;
+let weight = 0;
+let size = 0;
+let abilities;
+
+
+let darkModeStatus = 0;
 
 
 
@@ -14,7 +24,10 @@ async function loadPokemon() {
         let response = await fetch(url);
         currentPokemon = await response.json();
 
+
         allPokemon.push(currentPokemon);
+        updateGlobalVariables();
+
 
         renderPokemonCard(i);
 
@@ -27,40 +40,46 @@ async function loadPokemon() {
 
 
 function renderPokemonInfo(i) {
-    document.getElementById(`pokemon-name${i}`).innerHTML = currentPokemon[`name`];
-    document.getElementById(`pokemon-img${i}`).src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
-    document.getElementById(`type${i}`).innerHTML = currentPokemon['types'][0]['type']['name'];
-    if (currentPokemon['types'][1]) {
-        document.getElementById(`type2-${i}`).innerHTML = currentPokemon['types'][1]['type']['name'];
-        document.getElementById(`type2-${i}`).classList = `type ${currentPokemon['types'][1]['type']['name']}`;
+
+    document.getElementById(`pokemon-name${i}`).innerHTML = pokemonName;
+    document.getElementById(`pokemon-img${i}`).src = pokemonImg;
+    document.getElementById(`type${i}`).innerHTML = type;
+    if (type2) {
+        document.getElementById(`type2-${i}`).innerHTML = type2;
+        document.getElementById(`type2-${i}`).classList = `type ${type2}`;
 
     } else {
         document.getElementById(`type2-${i}`).classList = 'type d-none';
-
     }
 }
 
 function renderPokemonCard(i) {
-    let type = currentPokemon['types'][0]['type']['name'];
     document.getElementById('pokedex').innerHTML += templatePokemonCard(type, i);
     renderPokemonInfo(i);
 }
 
 
 function darkMode() {
-    for (let i = 1; i < 102; i++) {
-        document.getElementById(`pokemon-img-div${i}`).style = '';
+    if (darkModeStatus == 1) {
+        darkModeStatus = darkModeStatus - 1
     }
 
-   
+    changeStyleForDarkMode();
+    changeCssClassForDarkMode()
+    changeSource('moon', './img/moon.png')
+}
+
+function changeCssClassForDarkMode() {
     removeClassList('moon', 'border-dark');
     removeClassList('sun', 'border-white');
-    addClassList('moon', 'border-white')
-    addClassList('sun', 'border-dark')
-  
-    
-    document.getElementById('moon').src = './img/moon.png';
+    addClassList('moon', 'border-white');
+    addClassList('sun', 'border-dark');
+}
 
+function changeStyleForDarkMode() {
+    for (let i = 1; i < 102; i++) {
+        changeStyle(`pokemon-img-div${i}`, '');
+    }
     changeStyle('header', '');
     changeStyle('footer', '');
     changeStyle('sun', '');
@@ -68,102 +87,169 @@ function darkMode() {
     changeStyle('start-link', '');
     changeStyle('impressum-link', '');
     changeStyle('pokedex', '');
-    /*document.getElementById('header').style = '';
-    document.getElementById('footer').style = '';
-    document.getElementById('sun').style = '';
-    document.getElementById('logo-font').style = '';
-    document.getElementById('start-link').style = '';
-    document.getElementById('impressum-link').style = '';
-    document.getElementById('pokedex').style = '';*/
 }
 
-function addClassList(id, cssClass){
+function addClassList(id, cssClass) {
     document.getElementById(id).classList.add(cssClass);
 }
 
-function removeClassList(id, cssClass){
+function removeClassList(id, cssClass) {
     document.getElementById(id).classList.remove(cssClass);
 }
 
-function changeStyle(id, style){
+function changeStyle(id, style) {
     document.getElementById(id).style = style;
+}
+
+function changeSource(id, src) {
+    document.getElementById(id).src = src;
 }
 
 
 function darkModeOff() {
-    for (let i = 1; i < 102; i++) {
-        document.getElementById(`pokemon-img-div${i}`).style = 'background-color: #efefef;';
-    }
-
-    document.getElementById('moon').src = './img/moon-dark.png';
-    document.getElementById('header').style = 'background-color: #efefef; !important';
-    document.getElementById('footer').style = 'background-color: #efefef; !important';
-    document.getElementById('sun').style = 'background-color: black; !important';
-    document.getElementById('logo-font').style = 'color: black; !important';
-    document.getElementById('start-link').style = 'color: black; !important';
-    document.getElementById('impressum-link').style = 'color: black; !important';
-    document.getElementById('pokedex').style = 'background-color: white; !important';
+    darkModeStatus = darkModeStatus + 1;
+    changeStyleForDarkModeOff();
+    changeSource('moon', './img/moon-dark.png')
 }
+
+function changeStyleForDarkModeOff() {
+    for (let i = 1; i < 102; i++) {
+        changeStyle(`pokemon-img-div${i}`, 'background-color: #efefef;');
+    }
+    changeStyle('header', 'background-color: #efefef; !important;');
+    changeStyle('footer', 'background-color: #efefef; !important;');
+    changeStyle('sun', 'background-color: black; !important;');
+    changeStyle('logo-font', 'color: black; !important;');
+    changeStyle('start-link', 'color: black; !important;');
+    changeStyle('impressum-link', 'color: black; !important;');
+    changeStyle('pokedex', 'background-color: white; !important;');
+}
+
+
 
 function renderDetailCard(i) {
-
     currentPokemon = allPokemon[i];
-    let type = currentPokemon['types'][0]['type']['name'];
-    
-    document.getElementById('overlay').innerHTML = templateDetailCard(i);
-    calculatePokemonWeight(currentPokemon);
-    calculatePokemonSize(currentPokemon);
+    updateGlobalVariables(i);
 
-    document.getElementById('detail-card-name').innerHTML = currentPokemon['name'];
-    document.getElementById('detail-card-img').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+    document.getElementById('overlay').innerHTML = templateDetailCard(i);
+    calculatePokemonWeight();
+    calculatePokemonSize();
+    checkDarkModeInDetailCard();
+
+    document.getElementById('detail-card-name').innerHTML = pokemonName;
+    document.getElementById('detail-card-img').src = pokemonImg;
     document.getElementById('detail-card-img-div').classList = `detail-card-img-div ${type}-border`;
 
-    document.getElementById('detail-card-type').innerHTML = currentPokemon['types'][0]['type']['name'];
+    document.getElementById('detail-card-type').innerHTML = type;
     document.getElementById('detail-card').classList = `detail-card ${type}`;
-    checkPokemonType(currentPokemon);
+    checkPokemonType();
+    renderStats();
 }
 
-function calculatePokemonWeight(currentPokemon){
-    let weight = 0;
-    weight = currentPokemon['weight'] / 10;
+function renderStats() {
+    document.getElementById('detail-card-content').innerHTML = /*html*/ `
+    <div class="abilitiy-box">
+        <h2 class="margin-0">Abilities</h2>
+            <div id="abilities" class="abilities">
+            
+            </div>
+    
+    
+</div>`
+
+    renderAbilities();
+
+}
+
+function renderAbilities() {
+    for (let i = 0; i < abilities.length; i++) {
+        document.getElementById('abilities').innerHTML += /*html*/ `
+       <p>  ${abilities[i]['ability']['name']}, &nbsp; </p>`
+
+    }
+}
+
+function checkDarkModeInDetailCard() {
+
+    if (darkModeStatus == 1) {
+        changeStyle('detail-card-img-div', 'background-color: rgb(239, 239, 239); !important;');
+        changeStyle('detail-card-box', 'background-color: rgb(239, 239, 239); !important;');
+    } else {
+        changeStyle('detail-card-img-div', '');
+        changeStyle('detail-card-box', '');
+    }
+}
+
+function updateGlobalVariables() {
+    pokemonName = currentPokemon[`name`];
+    pokemonImg = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+    type = currentPokemon['types'][0]['type']['name'];
+    if (currentPokemon['types'][1]) {
+        type2 = currentPokemon['types'][1]['type']['name'];
+    } else {
+        type2 = '';
+    }
+    weight = currentPokemon['weight'];
+    size = currentPokemon['height'];
+    abilities = currentPokemon['abilities'];
+}
+
+function calculatePokemonWeight() {
+    weight = weight / 10;
     weight = weight.toString();
     weight = weight.replace(".", ",");
     document.getElementById('weigth').innerHTML = `${weight}kg`;
 }
 
-function calculatePokemonSize(currentPokemon){
-    let size = 0;
-    size = currentPokemon['height'] / 10;
+function calculatePokemonSize() {
+    size = size / 10;
     size = size.toString();
     size = size.replace(".", ",");
     document.getElementById('size').innerHTML = `${size}m`;
 }
 
-function checkPokemonType(currentPokemon){
-    if (currentPokemon['types'][1]) {
-        document.getElementById('detail-card-type2').innerHTML = currentPokemon['types'][1]['type']['name'];
-        document.getElementById('detail-card-type2').classList = `type ${currentPokemon['types'][1]['type']['name']}`;
-        document.getElementById('detail-card-type-box').style = 'justify-content: space-between; !important';
-
+function checkPokemonType() {
+    if (type2) {
+        document.getElementById('detail-card-type2').innerHTML = type2;
+        loadClassList('detail-card-type2', `type ${type2}`);
+        changeStyle('detail-card-type-box', 'justify-content: space-between; !important');
     } else {
-        document.getElementById('detail-card-type2').classList = 'type d-none';
-        document.getElementById('detail-card-type-box').style = 'justify-content: center; !important';
+        loadClassList('detail-card-type2', 'type d-none');
+        changeStyle('detail-card-type-box', 'justify-content: center; !important');
     }
+}
+
+function loadClassList(id, cssClass) {
+    document.getElementById(id).classList = cssClass;
 }
 
 function showDetailCard(i) {
     i--;
-    document.getElementById('overlay').classList.remove('d-none');
-    document.getElementById('body').classList.add('overflow-hidden');
+    removeClassList('overlay', 'd-none');
+    addClassList('body', 'overflow-hidden');
     renderDetailCard(i);
 }
 
 function backwardPokemon(i) {
-    i--;
+    if (i == 0) {
+        i = allPokemon.length - 1
+    } else {
+        i--;
+    }
     renderDetailCard(i);
 }
 
 function forwardPokemon(i) {
-    i++;
+    if (i == allPokemon.length - 1) {
+        i = 0;
+    } else {
+        i++;
+    }
+
     renderDetailCard(i);
+}
+
+function closeDetailCard() {
+    addClassList('overlay', 'd-none');
+    removeClassList('body', 'overflow-hidden');
 }

@@ -30,15 +30,24 @@ function templateDetailCard(i) {
     <div id="change-pokemon" class="change-pokemon">
         <img onclick="backwardPokemon(${i})" id="turn-left" class="turn-left-png" src="./img/winkel-links.png">
         <img onclick="forwardPokemon(${i})" id="turn-right" class="turn-right-png" src="./img/winkel-rechts.png">
-
     </div>
 
     <div id="detail-card-img-div" class="detail-card-img-div">
         <img class="detail-card-img" id="detail-card-img" src="" alt="">
     </div>
 
-    <div class="detail-card-box">
+    <div id="detail-card-box" class="detail-card-box">
+        <div class="stats-move-bar">
+            <p onclick="renderStats()" id="stats" class="stats">Stats</p>
+            <p id="moves" class="moves">Moves</p>
+        </div>
+
+        <div id="detail-card-content" class="detail-card-content">
+
+        </div>
 
     </div>
+    <img onclick="closeDetailCard()" class="close-icon" src="./img/close-icon.png" alt="">
+
 </div>`
 }
