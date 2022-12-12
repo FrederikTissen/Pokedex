@@ -458,10 +458,7 @@ position: relative;
     right: 14px;
 }
 
-.close-icon :hover{
-    height: 60px;
-    width: 60px;
-}
+
 
 .stats-move-bar{
     display: flex;

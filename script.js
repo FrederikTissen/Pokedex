@@ -1,3 +1,4 @@
+
 let currentPokemon = 0;
 let allPokemon = [];
 let pokemonName;
@@ -15,8 +16,16 @@ let darkModeStatus = 0;
 
 function init() {
     loadPokemon();
+
     //darkMode();
 }
+
+
+
+
+
+
+
 
 async function loadPokemon() {
     for (let i = 1; i < 102; i++) {
@@ -28,9 +37,8 @@ async function loadPokemon() {
         allPokemon.push(currentPokemon);
         updateGlobalVariables();
 
-
-        renderPokemonCard(i);
-
+        //renderPokemonCard(i);
+        showDetailCard(i);
     }
     console.log('Loaded Pokemon', allPokemon);
 
@@ -144,15 +152,17 @@ function renderDetailCard(i) {
     document.getElementById('detail-card').classList = `detail-card ${type}`;
     checkPokemonType();
     renderStats();
+    drawChart();
 }
 
 function renderStats() {
     document.getElementById('detail-card-content').innerHTML = /*html*/ `
     <div class="abilitiy-box">
-        <h2 class="margin-0">Abilities</h2>
-            <div id="abilities" class="abilities">
-            
-            </div>
+        <h3 class="margin-0">Abilities</h3>
+            <div id="abilities" class="abilities"></div>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
     
     
 </div>`
@@ -165,7 +175,6 @@ function renderAbilities() {
     for (let i = 0; i < abilities.length; i++) {
         document.getElementById('abilities').innerHTML += /*html*/ `
        <p>  ${abilities[i]['ability']['name']}, &nbsp; </p>`
-
     }
 }
 
@@ -181,7 +190,7 @@ function checkDarkModeInDetailCard() {
 }
 
 function updateGlobalVariables() {
-    pokemonName = currentPokemon[`name`];
+    pokemonName = currentPokemon['name'];
     pokemonImg = currentPokemon['sprites']['other']['official-artwork']['front_default'];
     type = currentPokemon['types'][0]['type']['name'];
     if (currentPokemon['types'][1]) {
