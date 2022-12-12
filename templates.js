@@ -17,10 +17,10 @@ function templatePokemonCard(type, i) {
 function templateDetailCard(i) {
     return /*html*/ `
     <div id="detail-card" class=" ">
-    <h1 class="detail-card-name margin-10" id="detail-card-name">Name</h1>
+    <h1 class="detail-card-name margin-10 color-white" id="detail-card-name">Name</h1>
     <div id="detail-card-type-box" class="detail-card-type-box">
-        <p id="detail-card-type" class="type "></p>
-        <p id="detail-card-type2" class="type "></p>
+        <p id="detail-card-type" class="type color-white"></p>
+        <p id="detail-card-type2" class="type color-white"></p>
     </div>
     <div id="size-box" class="size-box">
         <p id="size" class="size"></p>
@@ -38,8 +38,8 @@ function templateDetailCard(i) {
 
     <div id="detail-card-box" class="detail-card-box">
         <div class="stats-move-bar">
-            <p onclick="renderStats()" id="stats" class="stats">Stats</p>
-            <p id="moves" class="moves">Moves</p>
+            <p onclick="renderStats(), drawChart()" id="stats" class="stats ">Stats</p>
+            <p onclick="renderMoves()" id="moves" class="moves">Moves</p>
         </div>
 
         <div id="detail-card-content" class="detail-card-content">

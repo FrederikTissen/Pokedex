@@ -8,6 +8,8 @@ let type2;
 let weight = 0;
 let size = 0;
 let abilities;
+let stats;
+let moves;
 
 
 let darkModeStatus = 0;
@@ -37,8 +39,8 @@ async function loadPokemon() {
         allPokemon.push(currentPokemon);
         updateGlobalVariables();
 
-        //renderPokemonCard(i);
-        showDetailCard(i);
+        renderPokemonCard(i);
+        //showDetailCard(i);
     }
     console.log('Loaded Pokemon', allPokemon);
 
@@ -136,6 +138,7 @@ function changeStyleForDarkModeOff() {
 
 
 function renderDetailCard(i) {
+
     currentPokemon = allPokemon[i];
     updateGlobalVariables(i);
 
@@ -156,20 +159,41 @@ function renderDetailCard(i) {
 }
 
 function renderStats() {
+    document.getElementById('detail-card-content').innerHTML = '';
+    document.getElementById('stats').classList = `stats ${type}-underline`;
+    document.getElementById('moves').classList = 'moves';
+
+
+
     document.getElementById('detail-card-content').innerHTML = /*html*/ `
     <div class="abilitiy-box">
         <h3 class="margin-0">Abilities</h3>
             <div id="abilities" class="abilities"></div>
         <div>
+        <h3 class="margin-0">Stats</h3>
+            <div id="stats" class="stats"></div>
+        <div>
             <canvas id="myChart"></canvas>
         </div>
-    
-    
 </div>`
-
     renderAbilities();
-
 }
+
+function renderMoves() {
+    document.getElementById('detail-card-content').innerHTML = '';
+    document.getElementById('moves').classList = `moves ${type}-underline`;
+    document.getElementById('stats').classList = 'stats';
+
+    document.getElementById('detail-card-content').innerHTML = /*html*/ `
+    <div id="move-box" class="move-box">
+        <h3 >Moves</h3>
+</div>`
+    for (let i = 0; i < moves.length; i++) {
+        document.getElementById('move-box').innerHTML += /*html*/ `
+        ${moves[i]['move']['name']}, &nbsp; `
+    }
+}
+
 
 function renderAbilities() {
     for (let i = 0; i < abilities.length; i++) {
@@ -191,6 +215,8 @@ function checkDarkModeInDetailCard() {
 
 function updateGlobalVariables() {
     pokemonName = currentPokemon['name'];
+    pokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+
     pokemonImg = currentPokemon['sprites']['other']['official-artwork']['front_default'];
     type = currentPokemon['types'][0]['type']['name'];
     if (currentPokemon['types'][1]) {
@@ -201,6 +227,8 @@ function updateGlobalVariables() {
     weight = currentPokemon['weight'];
     size = currentPokemon['height'];
     abilities = currentPokemon['abilities'];
+    stats = currentPokemon['stats'];
+    moves = currentPokemon['moves'];
 }
 
 function calculatePokemonWeight() {
