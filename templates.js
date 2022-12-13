@@ -39,7 +39,7 @@ function templateDetailCard(i) {
     <div id="detail-card-box" class="detail-card-box">
         <div class="stats-move-bar">
             <p onclick="renderStats(), drawChart()" id="stats" class="stats ">Stats</p>
-            <p onclick="renderMoves()" id="moves" class="moves">Moves</p>
+            <p onclick="renderMoveBox()" id="moves" class="moves">Moves</p>
         </div>
 
         <div id="detail-card-content" class="detail-card-content">
@@ -47,7 +47,29 @@ function templateDetailCard(i) {
         </div>
 
     </div>
-    <img onclick="closeDetailCard()" class="close-icon" src="./img/close-icon.png" alt="">
+    <div class="close-icon">
+        <img onclick="closeDetailCard()"  src="./img/close-icon.png" alt="">
+    </div>
+</div>`
+}
 
+function templateMoves(){
+    return /*html*/ `
+    <div id="move-box" class="move-box">
+        <h3 >Moves</h3>
+    </div>`
+}
+
+function templateStats(){
+    return /*html*/ `
+    <div id="abilitiy-box" class="abilitiy-box">
+        <h3 class="margin-0">Abilities</h3>
+            <div id="abilities" class="abilities"></div>
+        <div>
+        <h3 class="margin-0">Stats</h3>
+            <div id="stat-canvas" class="stat-canvas"></div>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
 </div>`
 }

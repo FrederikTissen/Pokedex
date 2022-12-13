@@ -4,7 +4,6 @@ let dataStats = {
         label: '',
         borderSkipped: '',
         borderRadius: 8,
-        
 
         backgroundColor: [
             'rgb(40, 167, 69)',
@@ -16,8 +15,33 @@ let dataStats = {
         ],
         borderColor: 'rgb(255, 99, 132)',
         data: [],
-        //borderWidth: 1
     }]
+}
+
+let optionsOfStats = {
+    indexAxis: 'y',
+    scales: {
+        x: {
+          ticks: {
+            color: "grey"
+          }
+        },
+        y: {
+          ticks: {
+            color: "grey"
+          }
+        }
+      },
+    plugins: {
+        legend: {
+            display: false
+        },
+       
+        datalabels: {
+            display: true,
+            color: 'rgb(239, 239, 239)',
+        },
+    }
 }
 
 
@@ -28,23 +52,8 @@ function drawChart() {
     new Chart(ctx, {
         type: 'bar',
         data: dataStats,
-        options: {
-            indexAxis: 'y',
-           
-            plugins: {
-                legend: {
-                    display: false
-                },
-               
-                datalabels: {
-                    display: true,
-                    color: 'rgb(239, 239, 239)',
-                },
-            }
-        }
+        options: optionsOfStats,
     });
-
-
 }
 
 
@@ -53,7 +62,6 @@ function loadStatsData() {
     for (let i = 0; i < stats.length; i++) {
         dataStats['datasets'][0]['data'].push(stats[i]['base_stat']);
     }
-
 }
 
 

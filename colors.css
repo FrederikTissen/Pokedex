@@ -1,3 +1,5 @@
+
+/*Type-color of Cards*/
 .normal {
     background-color: #adac7e !important;
     border: 2px solid #474734;
@@ -19,7 +21,7 @@
 }
 
 .electric {
-    background-color: #f8d135 !important;
+    background-color: #e1bd2c !important;
     border: 2px solid #917A1F;
 }
 
@@ -32,11 +34,13 @@
 .fighting {
     background-color: #cc352c !important;
     border: 2px solid #661A16;
+    color: white;
 }
 
 .poison {
     background-color: #a842a6 !important;
     border: 2px solid #8C378B;
+    color: white;
 }
 
 .ground {
@@ -44,7 +48,6 @@
     border: 2px solid #7D6C3E;
     color: #172333 !important;
 }
-
 
 .flying {
     background-color: #ab94f0 !important;
@@ -92,6 +95,9 @@
     border: 2px solid #99518D;
 }
 
+
+
+/*Type-Color of Borders*/
 .normal-border {
     border: 3px solid #474734;
 }
@@ -166,12 +172,7 @@
 }
 
 
-
-
-
-
-
-
+/*Type-Color underline Stats/Moves bar*/
 .normal-underline {
     text-decoration: underline 3px solid #474734;
 }

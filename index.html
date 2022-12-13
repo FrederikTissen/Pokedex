@@ -7,25 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="colors.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Acme&family=Cinzel:wght@400;500;600;700;800;900&family=Economica:wght@700&family=Libre+Franklin:wght@100&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Pacifico&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+        rel="stylesheet">
     <script src="script.js"></script>
     <script src="templates.js"></script>
     <script src="statschart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   
-    
-
 </head>
 
 <body id="body" onload="init()">
-    
-  
-
-    <script>
- 
-    </script>
-    
     <div id="header" class="header">
         <div class="logo-box">
             <img class="logo pointer" src="img/pokeball_logo.png">
@@ -34,20 +26,14 @@
         <input class="input_header" type="text" placeholder="Suche">
 
         <div class="darkmode-box">
-            <img id="moon" onclick="darkMode()" class="label border-dark" src="./img/moon.png">
-            <img id="sun" onclick="darkModeOff()" class="label border-dark" src="./img/sun.png">
+            <img id="moon" onclick="darkMode()" class="label-moon border-white" src="./img/moon.png">
+            <img id="sun" onclick="darkModeOff()" class="label-sun border-dark" src="./img/sun.png">
         </div>
     </div>
 
-
     <div id="pokedex" class="pokedex"></div>
 
-    
-
-    <div class="overlay d-none" id="overlay">
-
-
-    </div>
+    <div class="overlay d-none" id="overlay"></div>
 
     <div id="footer" class="footer">
         <div id="link-bar" class="linkbar">
@@ -55,8 +41,5 @@
             <a id="impressum-link" class="link_footer" href=" ">Impressum & Datenschutz</a>
         </div>
     </div>
-
-
 </body>
-
 </html>
