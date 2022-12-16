@@ -69,7 +69,7 @@ function templateStats(){
         <h3 class="margin-0">Stats</h3>
             <div id="stat-canvas" class="stat-canvas"></div>
         <div>
-            <canvas id="myChart"></canvas>
+            <canvas id="myChart" class="myChart"></canvas>
         </div>
 </div>`
 }

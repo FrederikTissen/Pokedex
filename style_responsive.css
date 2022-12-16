@@ -1,0 +1,174 @@
+/* Just for smartpones*/
+@media(max-width: 670px) {
+    .hide-mobil {
+        display: none;
+    }
+
+    .logo-font {
+        display: none;
+    }
+
+    .detail-card {
+        margin: unset;
+    }
+
+}
+
+@media(max-width: 550px) {
+    .hide-mobil {
+        display: none;
+    }
+
+    .logo-font {
+        display: none;
+    }
+
+    .logo-box {
+        width: unset;
+    }
+
+    .label-moon {
+        margin-left: unset;
+    }
+
+    .darkmode-box {
+        width: unset;
+    }
+
+    .input_header {
+        width: 140px;
+    }
+
+    .size-box {
+        width: 335px;
+    }
+
+    .change-pokemon {
+        width: 270px;
+    }
+
+    .detail-card-box {
+        width: 350px;
+    }
+
+    .stats-move-bar {
+        width: 310px;
+        padding-left: 24px;
+    }
+
+    .detail-card-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .detail-card-img-div {
+        height: 160px;
+        width: 160px;
+    }
+
+    .detail-card{
+        width: 350px;
+    }
+
+    .detail-card-type-box {
+        width: 150px;
+    }
+
+}
+
+@media(max-width: 400px) {
+    .hide-mobil {
+        display: none;
+    }
+
+
+    .linkbar {
+        width: 200px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #pokedex {
+        padding: unset;
+        padding-top: 24px;
+    }
+
+    .footer{
+        height: 70px;
+    }
+}
+
+@media(max-width: 360px) {
+    .hide-mobil {
+        display: none;
+    }
+
+    .header {
+        height: 50px;
+    }
+
+    .darkmode-box {
+        flex-direction: column;
+    }
+
+    .input_header {
+        width: 115px;
+    }
+
+    .pokemon-card {
+        height: 240px;
+        width: 230px;
+        margin: unset;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .card-box {
+        width: 210px;
+    }
+
+    .weigth {
+        width: 50px;
+    }
+
+    .size {
+        width: 50px;
+    }
+
+    .size-box {
+        width: 265px;
+    }
+
+
+    .detail-card-box {
+        width: 270px;
+    }
+
+
+    .detail-card{
+        width: 270px;
+    }
+
+    .detail-card-type-box {
+        width: 150px;
+    }
+
+    .close-icon {
+        top: unset;
+        right: 0px;
+    }
+
+    .detail-card-content {
+        padding-left: 10px;
+    }
+
+    .stats-move-bar {
+        width: 240px;
+        padding-left: 10px;
+    }
+
+    #myChart {
+        width: 240px !important; 
+    }
+
+}

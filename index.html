@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="style_responsive.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Acme&family=Cinzel:wght@400;500;600;700;800;900&family=Economica:wght@700&family=Libre+Franklin:wght@100&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Pacifico&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
         rel="stylesheet">
@@ -21,9 +22,9 @@
     <div id="header" class="header">
         <div class="logo-box">
             <img class="logo pointer" src="img/pokeball_logo.png">
-            <h2 id="logo-font" class="color-white">Pokemon</h2>
+            <h2 id="logo-font" class="logo-font">Pokemon</h2>
         </div>
-        <input class="input_header" type="text" placeholder="Suche">
+        <input id="searchPokemon" class="input_header" type="text"  onkeyup="filterPokemons()">
 
         <div class="darkmode-box">
             <img id="moon" onclick="darkMode()" class="label-moon border-white" src="./img/moon.png">
