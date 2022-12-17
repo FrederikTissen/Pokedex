@@ -1,7 +1,7 @@
 function templatePokemonCard(type, i) {
     return /*html*/ `
     <div onclick="showDetailCard(${i})" id="pokemon-card${i}" class="pokemon-card ${type}">
-    <h2 class="card-name" id="pokemon-name${i}">Name</h2>
+    <h2 class="card-name" id="pokemon-name${i}"> Name</h2>
     <div class="card-box">
         <div id="pokemon-img-div${i}" class="pokemon-img-div" >
             <img class="pokemon-img" id="pokemon-img${i}" src="" >
@@ -16,7 +16,7 @@ function templatePokemonCard(type, i) {
 
 function templateDetailCard(i) {
     return /*html*/ `
-    <div id="detail-card" class=" ">
+    <div onclick="doNotClose(event)" id="detail-card" class=" ">
     <h1 class="detail-card-name margin-10 color-white" id="detail-card-name">Name</h1>
     <div id="detail-card-type-box" class="detail-card-type-box">
         <p id="detail-card-type" class="type color-white"></p>
